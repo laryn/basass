@@ -2,6 +2,9 @@
  * @file
  * Breadcrumb styles.
  */
+
+ @import '../variables.scss';
+
 .breadcrumb {
   overflow: hidden;
   margin: 1em 0;
