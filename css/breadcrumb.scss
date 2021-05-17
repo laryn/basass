@@ -1,0 +1,63 @@
+/**
+ * @file
+ * Breadcrumb styles.
+ */
+.breadcrumb {
+  overflow: hidden;
+  margin: 1em 0;
+  ol, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    position: relative;
+    padding: 0 1em;
+    float: left; /* LTR */
+    a, span {
+      position: relative;
+      z-index: 1;
+      display: block;
+      margin: 0 -1em;
+      padding: 0.5em 1.4em;
+      text-decoration: none;
+    }
+  }
+  li:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0; /* LTR */
+    width: 2em;
+    height: 2em;
+    border: 0.0625rem solid #fff;
+    border-width: 0.125rem 0.125rem 0 0;
+    -webkit-transform:
+      translate(0, -50%)
+      rotate(45deg); /* LTR */
+    transform:
+      translate(0, -50%)
+      rotate(45deg); /* LTR */
+  }
+  li:last-child:after {
+    display: none;
+  }
+}
+
+[dir="rtl"] {
+  .breadcrumb {
+    li {
+      float: right;
+    }
+    li:after {
+      left: 0;
+      right: auto;
+      -webkit-transform:
+        translate(0, -50%)
+        rotate(225deg);
+      transform:
+        translate(0, -50%)
+        rotate(225deg);
+    }
+  }
+}

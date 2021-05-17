@@ -1,0 +1,6 @@
+name = BaSASS
+description = Subtheme of Basis with CSS converted to SASS.
+backdrop = 1.x
+base theme = basis
+
+stylesheets[all][] = css/menu-dropdown.css

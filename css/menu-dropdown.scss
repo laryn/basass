@@ -1,0 +1,276 @@
+// Variables
+$border_color: #bbbbbb;
+$sub_border_color: #ffffff;
+$sub_border_left_color: #20252e;
+$background: #333333;
+$submenu_text_color: #000;
+
+/**
+ * @file
+ * Responsive menu styles
+ */
+.menu-dropdown {
+  position: relative;
+  a {
+    span.sub-arrow {
+      position: absolute;
+      top: 1rem;
+      margin-top: -1.0625rem;
+      left: auto;
+      right: 0;
+      width: 3.5rem;
+      height: 3.5rem;
+      overflow: hidden;
+      border: 1px solid $border_color;
+      background: $background;
+      font: normal 1.384615rem/2.125rem monospace;
+      text-align: center;
+      text-shadow: none;
+    }
+  }
+  span.sub-arrow:before {
+    display: block;
+    content: '+';
+    margin-top: 0.5625rem;
+  }
+  a.highlighted {
+    span.sub-arrow:before {
+      display: block;
+      content: '–';
+    }
+  }
+  ul {
+    a:hover,
+    a:focus,
+    a:active,
+    a.highlighted {
+      background-color: $background;
+    }
+  }
+}
+
+.js {
+  .menu-dropdown {
+    li, a.has-submenu.highlighted {
+      float: none;
+      border-bottom: 1px solid $border_color;
+    }
+    li.last {
+      border-bottom: 0;
+    }
+    > li.last {
+      padding-bottom: 1px;
+    }
+    > li:hover {
+      background-color: $background;
+    }
+    ul {
+      background-color: $background;
+      a, a:hover, a:focus, a:active, a.highlighted {
+        color: $submenu_text_color;
+      }
+      li {
+        a {
+          padding-left: 3em;
+        }
+        li {
+          a {
+            padding-left: 5em;
+          }
+        }
+      }
+      > li:hover {
+        background-color: $background;
+      }
+    }
+    li.has-children {
+      > a {
+        /* make room for the toggle button (sub indicator) */
+        padding-right: 3.625rem;
+      }
+      > a:hover,
+      > a:focus {
+        background-color: $background;
+      }
+    }
+    > li.has-children {
+      > a:hover,
+      > a:focus {
+        background-color: $background;
+      }
+      .js {
+        .menu-dropdown {
+          > li.has-children {
+            ul {
+              > a:hover {
+                background-color: $background;
+              }
+            }
+          }
+        }
+      }
+      ul {
+        > a:focus {
+          background-color: $background;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 34em) {
+  .menu-dropdown {
+    a {
+      span.sub-arrow {
+        width: 3.625rem;
+        height: 3.625rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 48em) {
+  /**
+   * Switch to desktop layout
+   * These transform the menu tree from
+   * collapsible to desktop (navbar + dropdowns)
+   */
+
+  .js {
+    .menu-dropdown {
+      ul {
+        position: absolute;
+        width: 12rem;
+        top: 1em;
+        li {
+          a, li a {
+            padding-left: 1.25rem;
+          }
+        }
+      }
+      li, a.has-submenu.highlighted {
+        border-bottom: none;
+      }
+      > li {
+        float: left;
+        border-bottom: 0;
+      }
+      > li.last {
+          padding-bottom: 0;
+      }
+      li.has-children {
+        > a {
+          padding-right: 1.75rem;
+        }
+      }
+    }
+  }
+
+  .menu-dropdown {
+    a {
+      white-space: nowrap;
+      span.sub-arrow {
+        top: 50%;
+        margin-top: -0.125rem;
+        right: 0.75rem;
+        width: 0;
+        height: 0;
+        border-width: 0.25rem;
+        border-style: solid dashed dashed dashed;
+        border-color: $sub_border_color transparent transparent transparent;
+        background: transparent;
+      }
+    }
+    a.highlighted {
+      span.sub-arrow:before {
+        display: none;
+      }
+    }
+    ul {
+      padding: 0.3125rem 0;
+      li {
+        float: none;
+      }
+      a {
+        white-space: normal;
+        span.sub-arrow {
+          right: 0.5rem;
+          top: 50%;
+          margin-top: -0.3125rem;
+          border-width: 0.3125rem;
+          border-style: dashed dashed dashed solid;
+          border-color: transparent transparent transparent $sub_border_color;
+        }
+      }
+      ul {
+        border-left: 3px solid $sub_border_left_color;
+      }
+      .has-children > a {
+        padding-right: 1.25rem;
+      }
+    }
+    li {
+      border-top: 0;
+    }
+    span.scroll-up, 
+    span.scroll-down {
+      position: absolute;
+      display: none;
+      visibility: hidden;
+      overflow: hidden;
+      height: 1.25rem;
+    }
+    span.scroll-up-arrow, 
+    span.scroll-down-arrow {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      margin-left: -0.375rem;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      border-width: 0.375rem;
+      border-style: dashed dashed solid dashed;
+      border-color: transparent transparent $sub_border_color transparent;
+    }
+    span.scroll-down-arrow {
+      top: 0.5rem;
+      border-style: solid dashed dashed dashed;
+      border-color: $sub_border_color transparent transparent transparent;
+    }
+  }
+
+  [dir="rtl"] {
+    .menu-dropdown {
+      > li {
+        > ul:before {
+          left: auto;
+          right: 1.875rem;
+        }
+        ul:after {
+          left: auto;
+          right: 1.9375rem;
+        }
+      }
+      li {
+        float: right;
+      }
+      li.has-children > a {
+        padding: 0.625rem 1.25rem;
+      }
+
+      ul {
+        li {
+          float: none;
+        }
+      }
+      span.sub-arrow {
+        right: auto;
+        left: 0.5rem;
+        border-style: dashed solid dashed dashed;
+        border-color: transparent $sub_border_color transparent transparent;
+      }
+
+    }
+  }
+}
