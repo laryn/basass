@@ -8,23 +8,23 @@
 .caption {
   display: table;
   max-width: 100%;
-}
 
-.caption > * {
-  display: block;
-  max-width: 100%;
-  border: none;
-}
+  > * {
+    display: block;
+    max-width: 100%;
+    border: none;
+  }
 
-.caption > figcaption {
-  display: table-caption;
-  caption-side: bottom;
-  max-width: none;
-  margin: 0.5em 0 1em;
-  padding: 0.3em 0.5em;
-  border: none;
-  border-left: 0.25rem solid #bbbbbb;
-  background: none;
+  > figcaption {
+    display: table-caption;
+    caption-side: bottom;
+    max-width: none;
+    margin: 0.5em 0 1em;
+    padding: 0.3em 0.5em;
+    border: none;
+    border-left: 0.25rem solid #bbbbbb;
+    background: none;
+  }
 }
 
 [dir="rtl"] .caption > figcaption {
@@ -41,4 +41,3 @@ img.align-right {
   margin-left: 2em;
   margin-bottom: 1em;
 }
-/*# sourceMappingURL=caption.css.map */
